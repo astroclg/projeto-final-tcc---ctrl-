@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programas Essenciais — CTRL</title>
+    <link rel="stylesheet" href="design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <canvas id="trail-canvas"></canvas>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="motherboard-container logo-header" title="Início - CTRL">
+                <svg class="circuit-bg" viewBox="0 0 450 300" aria-hidden="true">
+                    <path class="track t1" d="M 155 120 L 80 120 L 40 80 L 10 80" /><circle class="node n1" cx="10" cy="80" r="5" />
+                    <path class="track t2" d="M 155 135 L 90 135 L 50 95 L 10 95" /><circle class="node n2" cx="10" cy="95" r="5" />
+                    <path class="track t3" d="M 295 120 L 370 120 L 410 80 L 440 80" /><circle class="node n3" cx="440" cy="80" r="5" />
+                    <path class="track t4" d="M 295 135 L 360 135 L 400 95 L 440 95" /><circle class="node n4" cx="440" cy="95" r="5" />
+                    <path class="track t2" d="M 170 190 L 170 230 L 130 270 L 60 270" /><circle class="node n2" cx="60" cy="270" r="5" />
+                    <path class="track t3" d="M 190 190 L 190 245 L 150 285 L 80 285" /><circle class="node n3" cx="80" cy="285" r="5" />
+                    <path class="track t1" d="M 260 190 L 260 230 L 300 270 L 370 270" /><circle class="node n1" cx="370" cy="270" r="5" />
+                    <path class="track t4" d="M 280 190 L 280 245 L 320 285 L 390 285" /><circle class="node n4" cx="390" cy="285" r="5" />
+                </svg>
+                <div class="ctrl-button">CTRL</div>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="dicas-rapidas.html">Dicas Rápidas</a>
+                <a href="reparo.html">Scripts Windows</a>
+                <a href="formatacao.html">Redes & Formatação</a>
+                <a href="programas-essenciais.html" class="active">Programas Essenciais</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn"><span class="theme-icon">🌙</span></button>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="page-header">
+            <h1>🛠️ Programas Essenciais de Manutenção</h1>
+            <p>Links diretos e verificados para os downloads oficiais dos softwares mais recomendados na rotina de suporte técnico.</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="🔍 Pesquisar programas por nome ou categoria (ex: Rufus, Limpeza, CPU-Z)...">
+        </div>
+
+        <div class="table-container">
+            <table class="prog-table">
+                <thead>
+                    <tr>
+                        <th>Programa</th>
+                        <th>Categoria</th>
+                        <th>Descrição / Finalidade</th>
+                        <th>Download Oficial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CCleaner</strong></td>
+                        <td><span class="badge-cat">Limpeza</span></td>
+                        <td>Otimização do sistema e remoção de registros e temporários.</td>
+                        <td><a href="https://www.ccleaner.com/ccleaner/download" target="_blank" rel="noopener" class="btn-download">Baixar CCleaner ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>CPU-Z</strong></td>
+                        <td><span class="badge-cat">Diagnóstico</span></td>
+                        <td>Informa especificações exatas de Processador, Placa-Mãe e RAM.</td>
+                        <td><a href="https://www.cpuid.com/softwares/cpu-z.html" target="_blank" rel="noopener" class="btn-download">Baixar CPU-Z ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>CrystalDiskInfo</strong></td>
+                        <td><span class="badge-cat">Diagnóstico</span></td>
+                        <td>Leitura de dados S.M.A.R.T e saúde física de HDs e SSDs.</td>
+                        <td><a href="https://crystalmark.info/en/download/" target="_blank" rel="noopener" class="btn-download">Baixar CrystalDiskInfo ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Malwarebytes</strong></td>
+                        <td><span class="badge-cat">Segurança</span></td>
+                        <td>Remoção avançada de Trojans, Adwares e pragas digitais.</td>
+                        <td><a href="https://www.malwarebytes.com/mwb-download" target="_blank" rel="noopener" class="btn-download">Baixar Malwarebytes ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rufus</strong></td>
+                        <td><span class="badge-cat">Utilitário</span></td>
+                        <td>Criação de pendrives inicializáveis/bootáveis com imagens ISO.</td>
+                        <td><a href="https://rufus.ie/" target="_blank" rel="noopener" class="btn-download">Baixar Rufus ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Revo Uninstaller</strong></td>
+                        <td><span class="badge-cat">Utilitário</span></td>
+                        <td>Desinstalação profunda de programas e sobra de arquivos.</td>
+                        <td><a href="https://www.revouninstaller.com/revo-uninstaller-free-download/" target="_blank" rel="noopener" class="btn-download">Baixar Revo ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HWMonitor</strong></td>
+                        <td><span class="badge-cat">Diagnóstico</span></td>
+                        <td>Monitoramento de temperaturas, voltagens e ventoinhas em tempo real.</td>
+                        <td><a href="https://www.cpuid.com/softwares/hwmonitor.html" target="_blank" rel="noopener" class="btn-download">Baixar HWMonitor ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speccy</strong></td>
+                        <td><span class="badge-cat">Diagnóstico</span></td>
+                        <td>Resumo detalhado de todo o hardware do computador.</td>
+                        <td><a href="https://www.ccleaner.com/speccy/download" target="_blank" rel="noopener" class="btn-download">Baixar Speccy ↗</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Defraggler</strong></td>
+                        <td><span class="badge-cat">Otimização</span></td>
+                        <td>Desfragmentação individual de pastas e discos mecânicos.</td>
+                        <td><a href="https://www.ccleaner.com/defraggler/download" target="_blank" rel="noopener" class="btn-download">Baixar Defraggler ↗</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p><strong>CTRL — Controle, Tecnologia, Reparo & Lógica</strong> | TCC MSI FAETEC Macaé</p>
+        </div>
+    </footer>
+    <script src="function/interactives.js"></script>
+    <script src="function/trail.js"></script>
+</body>
+</html>
