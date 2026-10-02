@@ -26,7 +26,7 @@
     --accent-aqua: #008899;
     --accent-gray: #CBD5E1;
     --border-color: #CBD5E1;
-    --code-bg: #1E293B;
+    --code-bg: #0F172A; /* Fundo escuro garantido para o terminal no modo claro */
     --key-shadow: #007A30;
 }
 
@@ -103,7 +103,7 @@ body {
     pointer-events: none;
 }
 
-/* Trilhas em Estado Normal (Espessura aumentada de 4px para 6px para mais visibilidade) */
+/* Trilhas em Estado Normal */
 .track {
     fill: none;
     stroke: var(--border-color);
@@ -415,6 +415,7 @@ body {
     border-radius: 6px;
     font-size: 0.88rem;
     border: 1px solid var(--border-color);
+    color: #E2E8F0; /* Cor fixa e visível para a caixa de dica */
 }
 
 /* Scripts Section */
@@ -455,7 +456,7 @@ pre {
 
 code {
     font-family: var(--font-code);
-    color: var(--accent-green);
+    color: #00FF66; /* Verde neon brilhante garantido */
     font-size: 0.9rem;
 }
 
@@ -566,6 +567,31 @@ footer {
     .hero-title {
         font-size: 2rem;
     }
+}
+
+/* =============================================================
+   CORREÇÃO ESPECÍFICA PARA VISIBILIDADE DE CÓDIGOS/TEXTOS NO TEMA CLARO
+   ============================================================= */
+
+[data-theme="light"] pre,
+[data-theme="light"] .tip-box {
+    background-color: #0F172A !important; /* Mantém fundo escuro */
+    border-color: #334155 !important;
+}
+
+[data-theme="light"] code,
+[data-theme="light"] pre code {
+    color: #00FF66 !important; /* Força o comando a ser verde neon brilhante */
+}
+
+[data-theme="light"] .tip-box,
+[data-theme="light"] .tip-box * {
+    color: #F8FAFC !important; /* Garante que os textos dentro das caixinhas de dicas fiquem brancos */
+}
+
+[data-theme="light"] .tip-box strong,
+[data-theme="light"] .tip-box span {
+    color: #00FF66 !important; /* Destaque em verde claro para teclas/comandos */
 }
 
 /* =============================================================
