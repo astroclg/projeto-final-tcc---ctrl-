@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts de Reparo — CTRL</title>
+    <link rel="stylesheet" href="design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <canvas id="trail-canvas"></canvas>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="motherboard-container logo-header" title="Início - CTRL">
+                <svg class="circuit-bg" viewBox="0 0 450 300" aria-hidden="true">
+                    <path class="track t1" d="M 155 120 L 80 120 L 40 80 L 10 80" /><circle class="node n1" cx="10" cy="80" r="5" />
+                    <path class="track t2" d="M 155 135 L 90 135 L 50 95 L 10 95" /><circle class="node n2" cx="10" cy="95" r="5" />
+                    <path class="track t3" d="M 295 120 L 370 120 L 410 80 L 440 80" /><circle class="node n3" cx="440" cy="80" r="5" />
+                    <path class="track t4" d="M 295 135 L 360 135 L 400 95 L 440 95" /><circle class="node n4" cx="440" cy="95" r="5" />
+                    <path class="track t2" d="M 170 190 L 170 230 L 130 270 L 60 270" /><circle class="node n2" cx="60" cy="270" r="5" />
+                    <path class="track t3" d="M 190 190 L 190 245 L 150 285 L 80 285" /><circle class="node n3" cx="80" cy="285" r="5" />
+                    <path class="track t1" d="M 260 190 L 260 230 L 300 270 L 370 270" /><circle class="node n1" cx="370" cy="270" r="5" />
+                    <path class="track t4" d="M 280 190 L 280 245 L 320 285 L 390 285" /><circle class="node n4" cx="390" cy="285" r="5" />
+                </svg>
+                <div class="ctrl-button">CTRL</div>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="dicas-rapidas.html">Dicas Rápidas</a>
+                <a href="reparo.html" class="active">Scripts Windows</a>
+                <a href="formatacao.html">Redes & Formatação</a>
+                <a href="programas-essenciais.html">Programas Essenciais</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn"><span class="theme-icon">🌙</span></button>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="page-header">
+            <h1>⚡ Repositório de Scripts de Reparo (Windows)</h1>
+            <p>Comandos nativos para reparo de arquivos do sistema operacional, verificação de disco e atualização em massa de programas.</p>
+            <div class="alert-box">
+                ⚠️ <strong>Atenção Técnica:</strong> Todos estes comandos devem ser executados no <strong>Prompt de Comando (CMD)</strong> ou <strong>PowerShell</strong> como <strong>Administrador</strong>.
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="🔍 Pesquisar por comando (ex: SFC, DISM, WINGET)...">
+        </div>
+
+        <div class="script-section">
+            <div class="card script-card">
+                <div class="script-header">
+                    <h3>1. SFC /SCANNOW (System File Checker)</h3>
+                    <button class="btn-copy" onclick="copyCode('code-sfc')">📋 Copiar Comando</button>
+                </div>
+                <p>Verifica a integridade de todos os arquivos protegidos do Windows e substitui versões corrompidas por cópias de backup mantidas em cache no sistema.</p>
+                <pre><code id="code-sfc">sfc /scannow</code></pre>
+            </div>
+
+            <div class="card script-card">
+                <div class="script-header">
+                    <h3>2. DISM (Deployment Image Servicing and Management)</h3>
+                    <button class="btn-copy" onclick="copyCode('code-dism')">📋 Copiar Comando</button>
+                </div>
+                <p>Repara a imagem de componente do Windows que o SFC utiliza para recuperar arquivos. Executado quando o SFC encontra erros que não consegue corrigir sozinho.</p>
+                <pre><code id="code-dism">DISM /Online /Cleanup-Image /RestoreHealth</code></pre>
+            </div>
+
+            <div class="card script-card">
+                <div class="script-header">
+                    <h3>3. CHKDSK (Check Disk com Reparo de Setores)</h3>
+                    <button class="btn-copy" onclick="copyCode('code-chkdsk')">📋 Copiar Comando</button>
+                </div>
+                <p>Examina a estrutura do sistema de arquivos na unidade C:, corrige erros lógicos de disco e localiza setores defeituosos (bad sectors) para marcar como inutilizáveis.</p>
+                <pre><code id="code-chkdsk">chkdsk C: /f /r</code></pre>
+            </div>
+
+            <div class="card script-card">
+                <div class="script-header">
+                    <h3>4. WINGET UPGRADE (Atualização de Todos os Programas)</h3>
+                    <button class="btn-copy" onclick="copyCode('code-winget')">📋 Copiar Comando</button>
+                </div>
+                <p>Utiliza o gerenciador de pacotes oficial do Windows (Winget) para verificar e atualizar automaticamente TODOS os softwares instalados no computador para a versão mais recente.</p>
+                <pre><code id="code-winget">winget upgrade --all --include-unknown</code></pre>
+            </div>
+
+            <div class="card script-card">
+                <div class="script-header">
+                    <h3>5. Limpeza de Caches de Atualização (Reset do Windows Update)</h3>
+                    <button class="btn-copy" onclick="copyCode('code-wu')">📋 Copiar Script em Bloco</button>
+                </div>
+                <p>Para os serviços do Windows Update, apaga o cache de arquivos temporários de download e reinicia os serviços. Resolve 90% dos erros de travamento na instalação de atualizações.</p>
+                <pre><code id="code-wu">net stop wuauserv
+net stop cryptSvc
+net stop bits
+net stop msiserver
+ren C:\Windows\SoftwareDistribution SoftwareDistribution.old
+ren C:\Windows\System32\catroot2 catroot2.old
+net start wuauserv
+net start cryptSvc
+net start bits
+net start msiserver</code></pre>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p><strong>CTRL — Controle, Tecnologia, Reparo & Lógica</strong> | TCC MSI FAETEC Macaé</p>
+        </div>
+    </footer>
+    <script src="function/interactives.js"></script>
+    <script src="function/trail.js"></script>
+</body>
+</html>

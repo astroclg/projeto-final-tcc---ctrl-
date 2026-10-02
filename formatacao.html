@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes & Formatação — CTRL</title>
+    <link rel="stylesheet" href="design.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <canvas id="trail-canvas"></canvas>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="motherboard-container logo-header" title="Início - CTRL">
+                <svg class="circuit-bg" viewBox="0 0 450 300" aria-hidden="true">
+                    <path class="track t1" d="M 155 120 L 80 120 L 40 80 L 10 80" /><circle class="node n1" cx="10" cy="80" r="5" />
+                    <path class="track t2" d="M 155 135 L 90 135 L 50 95 L 10 95" /><circle class="node n2" cx="10" cy="95" r="5" />
+                    <path class="track t3" d="M 295 120 L 370 120 L 410 80 L 440 80" /><circle class="node n3" cx="440" cy="80" r="5" />
+                    <path class="track t4" d="M 295 135 L 360 135 L 400 95 L 440 95" /><circle class="node n4" cx="440" cy="95" r="5" />
+                    <path class="track t2" d="M 170 190 L 170 230 L 130 270 L 60 270" /><circle class="node n2" cx="60" cy="270" r="5" />
+                    <path class="track t3" d="M 190 190 L 190 245 L 150 285 L 80 285" /><circle class="node n3" cx="80" cy="285" r="5" />
+                    <path class="track t1" d="M 260 190 L 260 230 L 300 270 L 370 270" /><circle class="node n1" cx="370" cy="270" r="5" />
+                    <path class="track t4" d="M 280 190 L 280 245 L 320 285 L 390 285" /><circle class="node n4" cx="390" cy="285" r="5" />
+                </svg>
+                <div class="ctrl-button">CTRL</div>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="dicas-rapidas.html">Dicas Rápidas</a>
+                <a href="reparo.html">Scripts Windows</a>
+                <a href="formatacao.html" class="active">Redes & Formatação</a>
+                <a href="programas-essenciais.html">Programas Essenciais</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn"><span class="theme-icon">🌙</span></button>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="page-header">
+            <h1>🌐 Redes, Diagnóstico & Formatação</h1>
+            <p>Procedimentos essenciais para resolução de problemas de conectividade de rede e roteiro padronizado de formatação do sistema.</p>
+        </div>
+
+        <section class="section-mb">
+            <h2>📡 Resolução de Problemas de Rede & DNS</h2>
+
+            <div class="card script-card">
+                <div class="script-header">
+                    <h3>1. Flush DNS & Reset da Pilha TCP/IP</h3>
+                    <button class="btn-copy" onclick="copyCode('code-netreset')">📋 Copiar Comando</button>
+                </div>
+                <p>Limpa a tabela de resolução de nomes DNS corrompida e restaura as configurações padrão dos adaptadores de rede Winsock e IP.</p>
+                <pre><code id="code-netreset">ipconfig /flushdns
+ipconfig /release
+ipconfig /renew
+netsh winsock reset
+netsh int ip reset</code></pre>
+            </div>
+
+            <div class="card script-card">
+                <div class="script-header">
+                    <h3>2. Entendendo e Usando o Comando PING</h3>
+                    <button class="btn-copy" onclick="copyCode('code-ping')">📋 Copiar Comandos</button>
+                </div>
+                <p>O PING envia pacotes ICMP para testar conectividade e latência com um destino na rede.</p>
+                <pre><code id="code-ping"># Testar se a placa de rede local está funcionando (Loopback)
+ping 127.0.0.1
+
+# Testar se o computador alcança o Roteador (Gateway Padrão)
+ping 192.168.1.1
+
+# Testar se a conexão de internet externa e o DNS público do Google funcionam
+ping 8.8.8.8
+
+# PING contínuo para verificar perda de pacotes ao longo do tempo
+ping google.com -t</code></pre>
+            </div>
+        </section>
+
+        <section class="section-mb">
+            <h2>💾 Guia Passo a Passo: Formatação Limpa do Windows</h2>
+            <div class="grid-2">
+                <div class="card step-card">
+                    <div class="step-num">01</div>
+                    <h3>Criar Pendrive Bootável</h3>
+                    <p>Baixe a ferramenta oficial <strong>Media Creation Tool</strong> da Microsoft ou utilize o <strong>Rufus</strong> junto de uma imagem ISO do Windows 11/10.</p>
+                </div>
+
+                <div class="card step-card">
+                    <div class="step-num">02</div>
+                    <h3>Backup de Dados Pessoais</h3>
+                    <p>Copie pastas importantes (Documentos, Fotos, Downloads) para um HD Externo ou Nuvem. A formatação apagará todos os dados na partição C:.</p>
+                </div>
+
+                <div class="card step-card">
+                    <div class="step-num">03</div>
+                    <h3>Boot pela BIOS/UEFI</h3>
+                    <p>Ligue o computador pressionando a tecla de Boot (geralmente F12, F11, F8 ou Delete) e selecione a inicialização a partir do Pendrive SanDisk/Kingston.</p>
+                </div>
+
+                <div class="card step-card">
+                    <div class="step-num">04</div>
+                    <h3>Particionamento & Instalação</h3>
+                    <p>Na tela de instalação, selecione "Personalizada", exclua as partições antigas do disco do sistema, selecione o "Espaço Não Alocado" e avance.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p><strong>CTRL — Controle, Tecnologia, Reparo & Lógica</strong> | TCC MSI FAETEC Macaé</p>
+        </div>
+    </footer>
+    <script src="function/interactives.js"></script>
+    <script src="function/trail.js"></script>
+</body>
+</html>
