@@ -12,7 +12,7 @@
     --border-color: #263339;
     --code-bg: #090D0F;
     --key-shadow: #00B348;
-    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-main: 'Inter', sans-serif;
     --font-code: 'Fira Code', monospace;
 }
 
@@ -21,36 +21,27 @@
     --bg-card: #FFFFFF;
     --bg-header: #EAEFF2;
     --text-primary: #1E293B;
-    --text-secondary: #475569;
-    --accent-green: #008A37;
-    --accent-aqua: #007A8A;
-    --accent-gray: #E2E8F0;
+    --text-secondary: #64748B;
+    --accent-green: #00A843;
+    --accent-aqua: #008899;
+    --accent-gray: #CBD5E1;
     --border-color: #CBD5E1;
-    --code-bg: #0F172A;
-    --key-shadow: #005C25;
+    --code-bg: #1E293B;
+    --key-shadow: #007A30;
 }
 
-*, *::before, *::after {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html {
-    background-color: var(--bg-primary);
-}
-
 body {
-    background-color: transparent !important;
+    background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-main);
     line-height: 1.6;
-    transition: color 0.3s ease;
-}
-
-main, .navbar, footer {
-    position: relative;
-    z-index: 1;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -76,7 +67,7 @@ main, .navbar, footer {
 }
 
 /* =============================================================
-   LOGOS PLACA MÃE COM TRILHAS E EFEITO RGB
+   LOGOS PLACA MÃE COM TRILHAS MAIS VISÍVEIS E EFEITO RGB
    ============================================================= */
 
 .motherboard-container {
@@ -89,13 +80,13 @@ main, .navbar, footer {
     overflow: visible;
 }
 
-/* Logo Topo */
+/* Logo do Topo (Navbar) */
 .logo-header {
     width: 140px;
     height: 60px;
 }
 
-/* Logo Hero */
+/* Logo Hero (Central na página de Início) */
 .logo-hero {
     width: 280px;
     height: 130px;
@@ -104,12 +95,15 @@ main, .navbar, footer {
 
 .circuit-bg {
     position: absolute;
-    inset: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     z-index: 1;
     pointer-events: none;
 }
 
-/* Trilhas em Estado Normal */
+/* Trilhas em Estado Normal (Espessura aumentada de 4px para 6px para mais visibilidade) */
 .track {
     fill: none;
     stroke: var(--border-color);
@@ -124,16 +118,16 @@ main, .navbar, footer {
     transition: fill 0.4s ease, filter 0.4s ease;
 }
 
-/* --- ANIMAÇÕES RGB --- */
+/* --- ANIMAÇÃO E CORES RGB FLUÍDAS (LOGOS E CARDS) --- */
 
 @keyframes rgbFlow {
-    0% { filter: drop-shadow(0 0 6px #00ff88); }
-    50% { filter: drop-shadow(0 0 10px #00e5ff); }
-    100% { filter: drop-shadow(0 0 6px #00ff88); }
+    0% { filter: drop-shadow(0 0 8px #00ff88) hue-rotate(0deg); }
+    50% { filter: drop-shadow(0 0 12px #00e5ff) hue-rotate(180deg); }
+    100% { filter: drop-shadow(0 0 8px #00ff88) hue-rotate(360deg); }
 }
 
 @keyframes rgbBorder {
-    0%, 100% {
+    0% {
         border-color: #00ff88;
         box-shadow: 0 4px 20px rgba(0, 255, 136, 0.35);
     }
@@ -144,6 +138,10 @@ main, .navbar, footer {
     66% {
         border-color: #ff007f;
         box-shadow: 0 4px 20px rgba(255, 0, 127, 0.35);
+    }
+    100% {
+        border-color: #00ff88;
+        box-shadow: 0 4px 20px rgba(0, 255, 136, 0.35);
     }
 }
 
@@ -214,8 +212,7 @@ main, .navbar, footer {
     transition: color 0.2s;
 }
 
-.nav-links a:hover, 
-.nav-links a.active {
+.nav-links a:hover, .nav-links a.active {
     color: var(--accent-green);
 }
 
@@ -300,7 +297,7 @@ main, .navbar, footer {
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
 }
 
 .btn-primary {
@@ -341,6 +338,7 @@ main, .navbar, footer {
     color: inherit;
 }
 
+/* --- CARDS COM EFEITO DE BORDA E GLOW RGB AO PASSAR O MOUSE --- */
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -461,7 +459,7 @@ code {
     font-size: 0.9rem;
 }
 
-/* Step Cards */
+/* Step cards */
 .step-card {
     position: relative;
     padding-left: 70px;
@@ -487,7 +485,7 @@ code {
     padding-left: 12px;
 }
 
-/* Table Styling */
+/* Table styling */
 .table-container {
     overflow-x: auto;
     background: var(--bg-card);
@@ -501,8 +499,7 @@ code {
     text-align: left;
 }
 
-.prog-table th, 
-.prog-table td {
+.prog-table th, .prog-table td {
     padding: 16px 20px;
     border-bottom: 1px solid var(--border-color);
 }
@@ -534,7 +531,7 @@ code {
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
-    transition: all 0.2s ease;
+    transition: all 0.2s;
 }
 
 .btn-download:hover {
@@ -559,16 +556,6 @@ footer {
     opacity: 0.7;
 }
 
-/* Efeito De Trilha Do Mouse (Canvas) */
-#trail-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    pointer-events: none;
-}
-
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -576,8 +563,33 @@ footer {
         padding: 15px;
         gap: 15px;
     }
-    
     .hero-title {
         font-size: 2rem;
     }
+}
+
+/* =============================================================
+   EFEITO DE TRILHA DO MOUSE (CANVAS)
+   ============================================================= */
+#trail-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body {
+    background-color: transparent !important;
+}
+
+html {
+    background-color: var(--bg-primary);
+}
+
+main, .navbar, footer {
+    position: relative;
+    z-index: 1;
 }
