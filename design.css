@@ -573,25 +573,58 @@ footer {
    CORREÇÃO ESPECÍFICA PARA VISIBILIDADE DE CÓDIGOS/TEXTOS NO TEMA CLARO
    ============================================================= */
 
-[data-theme="light"] pre,
+/* =============================================================
+   CORREÇÃO DEFINITIVA DE CONTRASTE DA TIP-BOX (MODO ESCURO E CLARO)
+   ============================================================= */
+
+/* Estilo Base Universal da Tip-Box (Garante fundo escuro e texto claro em qualquer tema) */
+.tip-box {
+    margin-top: 15px;
+    background-color: #0F172A !important; /* Fundo azul/cinza bem escuro */
+    border: 1px solid #334155 !important;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: #F8FAFC !important; /* Texto principal em branco levemente suave */
+}
+
+/* Força todo e qualquer texto dentro da tip-box a ser legível */
+.tip-box, 
+.tip-box p, 
+.tip-box div, 
+.tip-box span {
+    color: #F8FAFC !important;
+}
+
+/* Destaque para atalhos, comandos e negritos dentro da caixa */
+.tip-box strong, 
+.tip-box code, 
+.tip-box b {
+    color: #00FF66 !important; /* Verde neon vibrante para atalhos (Win + I, etc.) */
+    font-family: var(--font-code);
+    font-weight: 700;
+}
+
+/* Regras específicas para Tema Claro para garantir zero conflitos de herança */
 [data-theme="light"] .tip-box {
-    background-color: #0F172A !important; /* Mantém fundo escuro */
+    background-color: #0F172A !important;
     border-color: #334155 !important;
 }
 
-[data-theme="light"] code,
-[data-theme="light"] pre code {
-    color: #00FF66 !important; /* Força o comando a ser verde neon brilhante */
-}
-
-[data-theme="light"] .tip-box,
 [data-theme="light"] .tip-box * {
-    color: #F8FAFC !important; /* Garante que os textos dentro das caixinhas de dicas fiquem brancos */
+    color: #F8FAFC !important;
 }
 
 [data-theme="light"] .tip-box strong,
-[data-theme="light"] .tip-box span {
-    color: #00FF66 !important; /* Destaque em verde claro para teclas/comandos */
+[data-theme="light"] .tip-box code,
+[data-theme="light"] .tip-box b {
+    color: #00FF66 !important;
+}
+
+[data-theme="light"] pre,
+[data-theme="light"] pre code {
+    background-color: #0F172A !important;
+    color: #00FF66 !important;
 }
 
 /* =============================================================
